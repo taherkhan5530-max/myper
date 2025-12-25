@@ -45,7 +45,7 @@ export function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                I'm <span className="text-[#3498db] font-semibold">Taher</span> (<span className="text-[#3498db] font-semibold">Muhammed Taher Khan</span>), a passionate Computer Science Engineering student based in Sylhet, Bangladesh. 
+                I'm <span className="text-[#3498db] font-semibold">Muhammed Taher Khan</span>, a passionate Computer Science Engineering student based in Sylhet, Bangladesh. 
                 My journey in technology is driven by curiosity and a relentless desire to create. 
                 I specialize in building clean, functional, and user-friendly web applications.
               </p>
