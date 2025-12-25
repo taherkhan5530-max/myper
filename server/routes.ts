@@ -31,29 +31,28 @@ async function sendTelegramMessage(name: string, email: string, message: string)
     return;
   }
 
-  const telegramMessage = `
-📩 New Contact Form Submission
-
-👤 Name: ${name}
-📧 Email: ${email}
-💬 Message: ${message}
-`;
+  const telegramMessage = `📩 New Contact Form Submission\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`;
 
   try {
-    const response = await fetch(
-      `https://api.telegram.org/bot${botToken}/sendMessage`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: telegramMessage,
-        }),
-      }
-    );
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    console.log("Sending to Telegram...");
+    
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: telegramMessage,
+        parse_mode: "HTML",
+      }),
+    });
 
+    const responseData = await response.json();
+    
     if (!response.ok) {
-      console.error("Failed to send Telegram message:", await response.text());
+      console.error("Telegram API Error:", responseData);
+    } else {
+      console.log("Message sent to Telegram successfully");
     }
   } catch (error) {
     console.error("Error sending Telegram message:", error);
@@ -70,6 +69,31 @@ export async function registerRoutes(
   app.get(api.skills.list.path, async (req, res) => {
     const skills = await storage.getSkills();
     res.json(skills);
+  });
+
+  // Test Telegram connection
+  app.get("/api/test-telegram", async (req, res) => {
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+
+    if (!botToken || !chatId) {
+      return res.status(400).json({ error: "Telegram credentials not configured" });
+    }
+
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${botToken}/getMe`
+      );
+      const data = await response.json();
+      
+      res.json({
+        status: "success",
+        bot: data,
+        chatId: chatId,
+      });
+    } catch (error) {
+      res.status(500).json({ error: String(error) });
+    }
   });
 
   app.post(api.contact.submit.path, async (req, res) => {
