@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-scroll";
+import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,38 +17,38 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: "HOME", to: "hero" },
-    { name: "ABOUT", to: "about" },
-    { name: "SKILLS", to: "skills" },
-    { name: "CONTACT", to: "contact" },
+    { name: "HOME", to: "/" },
+    { name: "ABOUT", to: "/about" },
+    { name: "SKILLS", to: "/skills" },
+    { name: "CONTACT", to: "/contact" },
   ];
 
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#2c3e50] shadow-lg py-4" : "bg-transparent py-6"
+        scrolled || location !== "/" ? "bg-[#2c3e50] shadow-lg py-4" : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-bold font-display tracking-tighter text-white">
-          MTK<span className="text-[#3498db]">.</span>
-        </div>
+        <Link href="/">
+          <div className="text-2xl font-bold font-display tracking-tighter text-white cursor-pointer">
+            MTK<span className="text-[#3498db]">.</span>
+          </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to={link.to}
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-80}
-              activeClass="text-[#3498db]"
-              className="text-white hover:text-[#3498db] transition-colors cursor-pointer text-sm font-medium tracking-wide uppercase"
+              href={link.to}
             >
-              {link.name}
+              <a className={`${
+                location === link.to ? "text-[#3498db]" : "text-white"
+              } hover:text-[#3498db] transition-colors cursor-pointer text-sm font-medium tracking-wide uppercase`}>
+                {link.name}
+              </a>
             </Link>
           ))}
         </nav>
@@ -74,16 +75,16 @@ export function Header() {
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
-                  to={link.to}
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                  offset={-80}
-                  activeClass="text-[#3498db]"
-                  onClick={() => setIsOpen(false)}
-                  className="text-white hover:text-[#3498db] cursor-pointer text-lg font-medium"
+                  href={link.to}
                 >
-                  {link.name}
+                  <a
+                    onClick={() => setIsOpen(false)}
+                    className={`${
+                      location === link.to ? "text-[#3498db]" : "text-white"
+                    } hover:text-[#3498db] cursor-pointer text-lg font-medium`}
+                  >
+                    {link.name}
+                  </a>
                 </Link>
               ))}
             </div>
