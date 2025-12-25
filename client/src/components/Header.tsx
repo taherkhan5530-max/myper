@@ -40,9 +40,11 @@ export function Header() {
             <Link
               key={link.name}
               to={link.to}
+              spy={true}
               smooth={true}
               duration={500}
               offset={-80}
+              activeClass="text-[#3498db]"
               className="text-white hover:text-[#3498db] transition-colors cursor-pointer text-sm font-medium tracking-wide uppercase"
             >
               {link.name}
@@ -73,9 +75,11 @@ export function Header() {
                 <Link
                   key={link.name}
                   to={link.to}
+                  spy={true}
                   smooth={true}
                   duration={500}
                   offset={-80}
+                  activeClass="text-[#3498db]"
                   onClick={() => setIsOpen(false)}
                   className="text-white hover:text-[#3498db] cursor-pointer text-lg font-medium"
                 >
