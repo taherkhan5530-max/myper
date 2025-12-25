@@ -66,15 +66,6 @@ export default function ServicesPage() {
             </h2>
             <div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" />
             <p className="mt-4 text-gray-500">Professional solutions tailored to your unique requirements.</p>
-            <a
-              href="https://wa.me/+8801946325530"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-block px-8 py-4 bg-[#3498db] text-white font-bold rounded-full shadow-lg shadow-[#3498db]/30 hover:shadow-xl hover:bg-[#2980b9] hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider text-sm"
-              data-testid="button-connect-whatsapp"
-            >
-              Connect on WhatsApp
-            </a>
           </motion.div>
 
           <motion.div
@@ -95,11 +86,9 @@ export default function ServicesPage() {
                 <h3 className="text-xl font-bold text-[#2c3e50] mb-4">{service.title}</h3>
                 <p className="text-gray-500 leading-relaxed flex-1">{service.description}</p>
                 <a
-                  href="https://wa.me/+8801946325530"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/contact"
                   className="mt-6 bg-[#3498db] text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-[#2980b9] transition-colors duration-300"
-                  data-testid="button-book-whatsapp"
+                  data-testid="button-book-now"
                 >
                   Book Now
                 </a>
