@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Code, Palette, Laptop, ShoppingCart, ShieldCheck, Database } from "lucide-react";
+import { Code, Palette, Laptop, ShoppingCart, ShieldCheck, Database, Bug, Shirt, Presentation } from "lucide-react";
 
 export default function ServicesPage() {
   const services = [
@@ -19,6 +19,21 @@ export default function ServicesPage() {
       title: "Shopify Store Design",
       description: "End-to-end e-commerce solutions to launch and scale your online business successfully.",
       icon: ShoppingCart,
+    },
+    {
+      title: "Website Bug Hunting",
+      description: "Identifying and resolving critical bugs to ensure your website runs smoothly and securely.",
+      icon: Bug,
+    },
+    {
+      title: "T-shirt Design",
+      description: "Creative and trendy apparel designs that make a statement and stand out.",
+      icon: Shirt,
+    },
+    {
+      title: "Presentation Making",
+      description: "Professional, visually engaging presentations that effectively communicate your message.",
+      icon: Presentation,
     },
   ];
 
