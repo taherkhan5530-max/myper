@@ -32,10 +32,8 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/">
-          <div className="text-2xl font-bold font-display tracking-tighter text-white cursor-pointer">
-            MTK<span className="text-[#3498db]">.</span>
-          </div>
+        <Link href="/" className="text-2xl font-bold font-display tracking-tighter text-white cursor-pointer">
+          MTK<span className="text-[#3498db]">.</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -44,12 +42,11 @@ export function Header() {
             <Link
               key={link.name}
               href={link.to}
-            >
-              <a className={`${
+              className={`${
                 location === link.to ? "text-[#3498db]" : "text-white"
-              } hover:text-[#3498db] transition-colors cursor-pointer text-sm font-medium tracking-wide uppercase`}>
-                {link.name}
-              </a>
+              } hover:text-[#3498db] transition-colors cursor-pointer text-sm font-medium tracking-wide uppercase`}
+            >
+              {link.name}
             </Link>
           ))}
         </nav>
@@ -77,15 +74,12 @@ export function Header() {
                 <Link
                   key={link.name}
                   href={link.to}
+                  onClick={() => setIsOpen(false)}
+                  className={`${
+                    location === link.to ? "text-[#3498db]" : "text-white"
+                  } hover:text-[#3498db] cursor-pointer text-lg font-medium`}
                 >
-                  <a
-                    onClick={() => setIsOpen(false)}
-                    className={`${
-                      location === link.to ? "text-[#3498db]" : "text-white"
-                    } hover:text-[#3498db] cursor-pointer text-lg font-medium`}
-                  >
-                    {link.name}
-                  </a>
+                  {link.name}
                 </Link>
               ))}
             </div>
