@@ -78,13 +78,22 @@ export default function ServicesPage() {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#3498db]/20 flex flex-col items-center text-center group"
+                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#3498db]/20 flex flex-col items-center text-center group min-h-[320px]"
               >
                 <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-[#3498db] transition-colors duration-300">
                   <service.icon className="w-8 h-8 text-[#3498db] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="text-xl font-bold text-[#2c3e50] mb-4">{service.title}</h3>
-                <p className="text-gray-500 leading-relaxed">{service.description}</p>
+                <p className="text-gray-500 leading-relaxed flex-1">{service.description}</p>
+                <a
+                  href="https://wa.me/+8801946325530"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 bg-[#3498db] text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-[#2980b9] transition-colors duration-300"
+                  data-testid="button-book-whatsapp"
+                >
+                  Book Now
+                </a>
               </motion.div>
             ))}
           </motion.div>
