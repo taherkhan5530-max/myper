@@ -87,13 +87,13 @@ export function Contact() {
             <div className="pt-8 border-t border-gray-100">
               <h3 className="text-lg font-bold text-[#2c3e50] mb-6">Follow Me</h3>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:-translate-y-1 transition-transform">
+                <a href="https://www.facebook.com/profile.php?id=61582955453879" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-facebook">
                   <Facebook size={20} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#285aeb] text-white flex items-center justify-center hover:-translate-y-1 transition-transform">
+                <a href="https://www.instagram.com/cxtaher?igsh=NjN0d3F2dWJldDN3" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#285aeb] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-instagram">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:-translate-y-1 transition-transform">
+                <a href="https://wa.me/+8801946325530" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-whatsapp">
                   <Send size={20} />
                 </a>
               </div>
