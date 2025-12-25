@@ -16,11 +16,6 @@ export default function ServicesPage() {
       icon: Palette,
     },
     {
-      title: "Computer Assemble",
-      description: "Professional custom PC building and hardware optimization tailored to your specific needs.",
-      icon: Laptop,
-    },
-    {
       title: "Shopify Store Design",
       description: "End-to-end e-commerce solutions to launch and scale your online business successfully.",
       icon: ShoppingCart,
@@ -29,11 +24,6 @@ export default function ServicesPage() {
       title: "Cyber Security",
       description: "Basic security audits and implementation to protect your digital assets and privacy.",
       icon: ShieldCheck,
-    },
-    {
-      title: "Database Management",
-      description: "Efficient database design and optimization for secure and scalable data storage.",
-      icon: Database,
     },
   ];
 
