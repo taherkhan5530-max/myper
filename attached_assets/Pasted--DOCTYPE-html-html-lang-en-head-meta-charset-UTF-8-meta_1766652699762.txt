@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Taher Khan | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">MTK.</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Muhammed Taher Khan</span></h1>
+            <p>Computer Science Engineering Student & Tech Enthusiast</p>
+            <a href="#contact" class="btn">Hire Me</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I am a passionate Computer Science Engineering student based in <strong>Sylhet, Bangladesh</strong>. I love solving problems and building creative digital solutions.</p>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fas fa-code"></i> <h3>Web Design & Dev</h3></div>
+            <div class="skill-card"><i class="fas fa-paint-brush"></i> <h3>Logo Design</h3></div>
+            <div class="skill-card"><i class="fas fa-desktop"></i> <h3>Computer Assemble</h3></div>
+            <div class="skill-card"><i class="fab fa-shopify"></i> <h3>Shopify Store Design</h3></div>
+            <div class="skill-card"><i class="fas fa-tshirt"></i> <h3>T-shirt Design</h3></div>
+            <div class="skill-card"><i class="fas fa-shield-alt"></i> <h3>Cyber Security (Basic)</h3></div>
+            <div class="skill-card"><i class="fab fa-python"></i> <h3>Python</h3></div>
+            <div class="skill-card"><i class="fab fa-java"></i> <h3>Java</h3></div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> taherkhan5530@gmail.com</p>
+            <p><i class="fab fa-whatsapp"></i> 01946325530</p>
+            <p><i class="fas fa-map-marker-alt"></i> Sylhet, Bangladesh</p>
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61582955453879" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/cxtaher?igsh=MWJpMDFhNnZsMmV4Yw==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/8801946325530" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Muhammed Taher Khan. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
