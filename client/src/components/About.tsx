@@ -49,11 +49,20 @@ export function About() {
                 My journey in technology is driven by curiosity and a relentless desire to create. 
                 I specialize in building clean, functional, and user-friendly web applications.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 Whether it's solving complex algorithms or crafting pixel-perfect interfaces, 
                 I approach every challenge with enthusiasm and dedication. I am constantly learning 
                 new technologies to stay ahead in this ever-evolving field.
               </p>
+              <a
+                href="https://wa.me/+8801946325530"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 bg-[#3498db] text-white font-bold rounded-full shadow-lg shadow-[#3498db]/30 hover:shadow-xl hover:bg-[#2980b9] hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider text-sm"
+                data-testid="button-whatsapp"
+              >
+                Connect on WhatsApp
+              </a>
             </motion.div>
           </div>
           
