@@ -60,7 +60,6 @@ export function Contact() {
               <div>
                 <h3 className="text-xl font-bold text-[#2c3e50]">Email Me</h3>
                 <p className="text-gray-600 mt-1">taherkhan5530@gmail.com</p>
-                <p className="text-gray-600">hello@taherkhan.dev</p>
               </div>
             </div>
 
