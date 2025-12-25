@@ -66,6 +66,15 @@ export default function ServicesPage() {
             </h2>
             <div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" />
             <p className="mt-4 text-gray-500">Professional solutions tailored to your unique requirements.</p>
+            <a
+              href="https://wa.me/+8801946325530"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-block px-8 py-4 bg-[#3498db] text-white font-bold rounded-full shadow-lg shadow-[#3498db]/30 hover:shadow-xl hover:bg-[#2980b9] hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider text-sm"
+              data-testid="button-connect-whatsapp"
+            >
+              Connect on WhatsApp
+            </a>
           </motion.div>
 
           <motion.div
