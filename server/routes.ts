@@ -22,6 +22,44 @@ async function seedDatabase() {
   }
 }
 
+async function sendTelegramMessage(name: string, email: string, message: string) {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (!botToken || !chatId) {
+    console.warn("Telegram bot credentials not configured");
+    return;
+  }
+
+  const telegramMessage = `
+📩 New Contact Form Submission
+
+👤 Name: ${name}
+📧 Email: ${email}
+💬 Message: ${message}
+`;
+
+  try {
+    const response = await fetch(
+      `https://api.telegram.org/bot${botToken}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: telegramMessage,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Failed to send Telegram message:", await response.text());
+    }
+  } catch (error) {
+    console.error("Error sending Telegram message:", error);
+  }
+}
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
@@ -38,6 +76,10 @@ export async function registerRoutes(
     try {
       const input = api.contact.submit.input.parse(req.body);
       const message = await storage.createMessage(input);
+      
+      // Send to Telegram bot
+      await sendTelegramMessage(input.name, input.email, input.message);
+      
       res.status(201).json(message);
     } catch (err) {
       if (err instanceof z.ZodError) {
