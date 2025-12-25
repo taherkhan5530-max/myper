@@ -16,9 +16,10 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Home", to: "hero" },
-    { name: "About", to: "about" },
-    { name: "Contact", to: "contact" },
+    { name: "HOME", to: "hero" },
+    { name: "ABOUT", to: "about" },
+    { name: "SKILLS", to: "skills" },
+    { name: "CONTACT", to: "contact" },
   ];
 
   return (
