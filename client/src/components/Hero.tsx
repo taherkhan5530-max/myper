@@ -32,8 +32,7 @@ export function Hero() {
             I'm <span className="text-[#3498db]">Muhammed Taher Khan</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-            Computer Science Engineering Student & Tech Enthusiast based in Bangladesh.
-            Building the digital future one line of code at a time.
+            Architecting Logic, Designing Pixels: Crafting Seamless Digital Experiences.
           </p>
           
           <Link
