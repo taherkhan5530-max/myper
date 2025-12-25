@@ -60,13 +60,13 @@ export function Skills() {
                 <motion.div
                   key={skill.id}
                   variants={item}
-                  className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-[#3498db]/20 group flex flex-col items-center justify-center text-center h-full min-h-[180px]"
+                  className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-[#3498db]/20 group flex flex-col items-center justify-center text-center h-full min-h-[220px]"
                 >
-                  <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-4 group-hover:bg-[#3498db] transition-colors duration-300">
+                  <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-[#3498db] transition-all duration-300">
                     <Icon className="text-3xl text-[#3498db] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#2c3e50]">{skill.name}</h3>
-                  <p className="text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium text-[10px]">
+                  <h3 className="text-lg font-bold text-[#2c3e50] mb-2">{skill.name}</h3>
+                  <p className="text-xs text-gray-400 uppercase tracking-[0.2em] font-bold">
                     {skill.category}
                   </p>
                 </motion.div>
