@@ -94,7 +94,7 @@ export function Contact() {
                   <Instagram size={20} />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:-translate-y-1 transition-transform">
-                  <MessageCircle size={20} />
+                  <Send size={20} />
                 </a>
               </div>
             </div>
