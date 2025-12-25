@@ -20,11 +20,6 @@ export default function ServicesPage() {
       description: "End-to-end e-commerce solutions to launch and scale your online business successfully.",
       icon: ShoppingCart,
     },
-    {
-      title: "Cyber Security",
-      description: "Basic security audits and implementation to protect your digital assets and privacy.",
-      icon: ShieldCheck,
-    },
   ];
 
   const container = {
