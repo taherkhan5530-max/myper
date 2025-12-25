@@ -1,8 +1,5 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Skills } from "@/components/Skills";
-import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { motion, useScroll, useSpring } from "framer-motion";
 
@@ -25,7 +22,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <About />
       </main>
       <Footer />
     </div>
