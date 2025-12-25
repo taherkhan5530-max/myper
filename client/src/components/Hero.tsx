@@ -29,7 +29,7 @@ export function Hero() {
             Hello, Welcome
           </h2>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-display leading-tight">
-            I'm <span className="text-[#3498db]">Muhammed Taher Khan</span>
+            I'm <span className="text-[#3498db]">Taher</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
             Architecting Logic, Designing Pixels: Crafting Seamless Digital Experiences.
