@@ -1,4 +1,3 @@
-import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 
 export function Hero() {
@@ -35,15 +34,14 @@ export function Hero() {
             Architecting Logic, Designing Pixels: Crafting Seamless Digital Experiences.
           </p>
           
-          <Link
-            to="contact"
-            smooth={true}
-            duration={500}
-            offset={-80}
+          <a
+            href="https://wa.me/8801946325530"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-[#3498db] text-white font-bold rounded-full shadow-lg shadow-[#3498db]/30 hover:shadow-xl hover:bg-[#2980b9] hover:-translate-y-1 transition-all duration-300 cursor-pointer uppercase tracking-wider text-sm"
           >
             Hire Me
-          </Link>
+          </a>
         </motion.div>
       </div>
 
