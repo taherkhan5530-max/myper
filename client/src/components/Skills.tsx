@@ -15,6 +15,9 @@ const getIconComponent = (iconName: string): IconType => {
 export function Skills() {
   const { data: skills, isLoading } = useSkills();
 
+  console.log('Skills data:', skills);
+  console.log('Is loading:', isLoading);
+
   const container = {
     hidden: { opacity: 0 },
     show: {

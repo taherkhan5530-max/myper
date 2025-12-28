@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { Skills } from "@/components/Skills";
 import { Footer } from "@/components/Footer";
 import { motion, useScroll, useSpring } from "framer-motion";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Skills />
       </main>
       <Footer />
     </div>
