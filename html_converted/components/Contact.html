@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Contact.tsx</h1>
+  <pre><code class="language-tsx">import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { insertMessageSchema, type InsertMessage } from "@shared/schema";
+import { useSendMessage } from "@/hooks/use-portfolio";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Phone, Facebook, Instagram, MessageCircle, Send } from "lucide-react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+export function Contact() {
+  const mutation = useSendMessage();
+
+  const form = useForm&lt;InsertMessage&gt;({
+    resolver: zodResolver(insertMessageSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = (data: InsertMessage) =&gt; {
+    mutation.mutate(data, {
+      onSuccess: () =&gt; form.reset(),
+    });
+  };
+
+  return (
+    &lt;section id="contact" className="py-24 bg-white"&gt;
+      &lt;div className="container mx-auto px-4 max-w-6xl"&gt;
+        &lt;div className="text-center mb-16"&gt;
+          &lt;h2 className="text-3xl md:text-4xl font-bold text-[#2c3e50] mb-2 font-display"&gt;
+            Get In Touch
+          &lt;/h2&gt;
+          &lt;div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" /&gt;
+          &lt;p className="mt-4 text-gray-500"&gt;I'm currently available for freelance work and collaboration.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24"&gt;
+          {/* Contact Info */}
+          &lt;motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          &gt;
+            &lt;div className="flex items-start space-x-6"&gt;
+              &lt;div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0"&gt;
+                &lt;Mail className="text-[#3498db]" /&gt;
+              &lt;/div&gt;
+              &lt;div&gt;
+                &lt;h3 className="text-xl font-bold text-[#2c3e50]"&gt;Email Me&lt;/h3&gt;
+                &lt;p className="text-gray-600 mt-1"&gt;taherkhan5530@gmail.com&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div className="flex items-start space-x-6"&gt;
+              &lt;div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0"&gt;
+                &lt;Phone className="text-[#3498db]" /&gt;
+              &lt;/div&gt;
+              &lt;div&gt;
+                &lt;h3 className="text-xl font-bold text-[#2c3e50]"&gt;Call Me&lt;/h3&gt;
+                &lt;p className="text-gray-600 mt-1"&gt;+880 1946-325530&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div className="flex items-start space-x-6"&gt;
+              &lt;div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0"&gt;
+                &lt;MapPin className="text-[#3498db]" /&gt;
+              &lt;/div&gt;
+              &lt;div&gt;
+                &lt;h3 className="text-xl font-bold text-[#2c3e50]"&gt;Location&lt;/h3&gt;
+                &lt;p className="text-gray-600 mt-1"&gt;Sylhet, Bangladesh&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div className="pt-8 border-t border-gray-100"&gt;
+              &lt;h3 className="text-lg font-bold text-[#2c3e50] mb-6"&gt;Follow Me&lt;/h3&gt;
+              &lt;div className="flex space-x-4"&gt;
+                &lt;a href="https://www.facebook.com/profile.php?id=61582955453879" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-facebook"&gt;
+                  &lt;Facebook size={20} /&gt;
+                &lt;/a&gt;
+                &lt;a href="https://www.instagram.com/cxtaher?igsh=NjN0d3F2dWJldDN3" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#285aeb] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-instagram"&gt;
+                  &lt;Instagram size={20} /&gt;
+                &lt;/a&gt;
+                &lt;a href="https://wa.me/+8801946325530" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-whatsapp"&gt;
+                  &lt;Send size={20} /&gt;
+                &lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/motion.div&gt;
+
+          {/* Contact Form */}
+          &lt;motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-[#f8f9fa] p-8 rounded-2xl border border-gray-100 shadow-sm"
+          &gt;
+            &lt;Form {...form}&gt;
+              &lt;form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6"&gt;
+                &lt;FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) =&gt; (
+                    &lt;FormItem&gt;
+                      &lt;FormLabel className="text-[#2c3e50] font-semibold"&gt;Name&lt;/FormLabel&gt;
+                      &lt;FormControl&gt;
+                        &lt;Input
+                          placeholder="Your Name"
+                          className="bg-white border-gray-200 focus:border-[#3498db] focus:ring-[#3498db]/20 h-12 rounded-xl"
+                          {...field}
+                        /&gt;
+                      &lt;/FormControl&gt;
+                      &lt;FormMessage /&gt;
+                    &lt;/FormItem&gt;
+                  )}
+                /&gt;
+                
+                &lt;FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) =&gt; (
+                    &lt;FormItem&gt;
+                      &lt;FormLabel className="text-[#2c3e50] font-semibold"&gt;Email&lt;/FormLabel&gt;
+                      &lt;FormControl&gt;
+                        &lt;Input
+                          placeholder="Your Email"
+                          className="bg-white border-gray-200 focus:border-[#3498db] focus:ring-[#3498db]/20 h-12 rounded-xl"
+                          {...field}
+                        /&gt;
+                      &lt;/FormControl&gt;
+                      &lt;FormMessage /&gt;
+                    &lt;/FormItem&gt;
+                  )}
+                /&gt;
+
+                &lt;FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) =&gt; (
+                    &lt;FormItem&gt;
+                      &lt;FormLabel className="text-[#2c3e50] font-semibold"&gt;Message&lt;/FormLabel&gt;
+                      &lt;FormControl&gt;
+                        &lt;Textarea
+                          placeholder="Tell me about your project..."
+                          className="bg-white border-gray-200 focus:border-[#3498db] focus:ring-[#3498db]/20 min-h-[150px] rounded-xl resize-none"
+                          {...field}
+                        /&gt;
+                      &lt;/FormControl&gt;
+                      &lt;FormMessage /&gt;
+                    &lt;/FormItem&gt;
+                  )}
+                /&gt;
+
+                &lt;button
+                  type="submit"
+                  disabled={mutation.isPending}
+                  className="w-full h-14 bg-[#3498db] hover:bg-[#2980b9] text-white font-bold rounded-xl shadow-lg shadow-[#3498db]/25 hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                &gt;
+                  {mutation.isPending ? (
+                    &lt;span&gt;Sending...&lt;/span&gt;
+                  ) : (
+                    &lt;&gt;
+                      &lt;Send className="w-5 h-5" /&gt;
+                      &lt;span&gt;Send Message&lt;/span&gt;
+                    &lt;/&gt;
+                  )}
+                &lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/Form&gt;
+          &lt;/motion.div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre>
+</body>
+</html>

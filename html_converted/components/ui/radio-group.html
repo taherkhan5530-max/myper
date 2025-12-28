@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>radio-group.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>radio-group.tsx</h1>
+  <pre><code class="language-tsx">import * as React from "react"
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
+import { Circle } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const RadioGroup = React.forwardRef&lt;
+  React.ElementRef&lt;typeof RadioGroupPrimitive.Root&gt;,
+  React.ComponentPropsWithoutRef&lt;typeof RadioGroupPrimitive.Root&gt;
+&gt;(({ className, ...props }, ref) =&gt; {
+  return (
+    &lt;RadioGroupPrimitive.Root
+      className={cn("grid gap-2", className)}
+      {...props}
+      ref={ref}
+    /&gt;
+  )
+})
+RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
+
+const RadioGroupItem = React.forwardRef&lt;
+  React.ElementRef&lt;typeof RadioGroupPrimitive.Item&gt;,
+  React.ComponentPropsWithoutRef&lt;typeof RadioGroupPrimitive.Item&gt;
+&gt;(({ className, ...props }, ref) =&gt; {
+  return (
+    &lt;RadioGroupPrimitive.Item
+      ref={ref}
+      className={cn(
+        "aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      )}
+      {...props}
+    &gt;
+      &lt;RadioGroupPrimitive.Indicator className="flex items-center justify-center"&gt;
+        &lt;Circle className="h-2.5 w-2.5 fill-current text-current" /&gt;
+      &lt;/RadioGroupPrimitive.Indicator&gt;
+    &lt;/RadioGroupPrimitive.Item&gt;
+  )
+})
+RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
+
+export { RadioGroup, RadioGroupItem }
+</code></pre>
+</body>
+</html>

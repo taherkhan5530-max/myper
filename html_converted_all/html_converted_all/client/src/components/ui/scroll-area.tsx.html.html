@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scroll-area.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>scroll-area.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;scroll-area.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;scroll-area.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import * as React from "react"
+import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
+
+import { cn } from "@/lib/utils"
+
+const ScrollArea = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof ScrollAreaPrimitive.Root&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof ScrollAreaPrimitive.Root&amp;gt;
+&amp;gt;(({ className, children, ...props }, ref) =&amp;gt; (
+  &amp;lt;ScrollAreaPrimitive.Root
+    ref={ref}
+    className={cn("relative overflow-hidden", className)}
+    {...props}
+  &amp;gt;
+    &amp;lt;ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]"&amp;gt;
+      {children}
+    &amp;lt;/ScrollAreaPrimitive.Viewport&amp;gt;
+    &amp;lt;ScrollBar /&amp;gt;
+    &amp;lt;ScrollAreaPrimitive.Corner /&amp;gt;
+  &amp;lt;/ScrollAreaPrimitive.Root&amp;gt;
+))
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
+
+const ScrollBar = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof ScrollAreaPrimitive.ScrollAreaScrollbar&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof ScrollAreaPrimitive.ScrollAreaScrollbar&amp;gt;
+&amp;gt;(({ className, orientation = "vertical", ...props }, ref) =&amp;gt; (
+  &amp;lt;ScrollAreaPrimitive.ScrollAreaScrollbar
+    ref={ref}
+    orientation={orientation}
+    className={cn(
+      "flex touch-none select-none transition-colors",
+      orientation === "vertical" &amp;amp;&amp;amp;
+        "h-full w-2.5 border-l border-l-transparent p-[1px]",
+      orientation === "horizontal" &amp;amp;&amp;amp;
+        "h-2.5 flex-col border-t border-t-transparent p-[1px]",
+      className
+    )}
+    {...props}
+  &amp;gt;
+    &amp;lt;ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" /&amp;gt;
+  &amp;lt;/ScrollAreaPrimitive.ScrollAreaScrollbar&amp;gt;
+))
+ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
+
+export { ScrollArea, ScrollBar }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

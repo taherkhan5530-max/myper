@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toggle-group.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>toggle-group.tsx</h1>
+  <pre><code class="language-tsx">"use client"
+
+import * as React from "react"
+import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
+import { type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+import { toggleVariants } from "@/components/ui/toggle"
+
+const ToggleGroupContext = React.createContext&lt;
+  VariantProps&lt;typeof toggleVariants&gt;
+&gt;({
+  size: "default",
+  variant: "default",
+})
+
+const ToggleGroup = React.forwardRef&lt;
+  React.ElementRef&lt;typeof ToggleGroupPrimitive.Root&gt;,
+  React.ComponentPropsWithoutRef&lt;typeof ToggleGroupPrimitive.Root&gt; &amp;
+    VariantProps&lt;typeof toggleVariants&gt;
+&gt;(({ className, variant, size, children, ...props }, ref) =&gt; (
+  &lt;ToggleGroupPrimitive.Root
+    ref={ref}
+    className={cn("flex items-center justify-center gap-1", className)}
+    {...props}
+  &gt;
+    &lt;ToggleGroupContext.Provider value={{ variant, size }}&gt;
+      {children}
+    &lt;/ToggleGroupContext.Provider&gt;
+  &lt;/ToggleGroupPrimitive.Root&gt;
+))
+
+ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName
+
+const ToggleGroupItem = React.forwardRef&lt;
+  React.ElementRef&lt;typeof ToggleGroupPrimitive.Item&gt;,
+  React.ComponentPropsWithoutRef&lt;typeof ToggleGroupPrimitive.Item&gt; &amp;
+    VariantProps&lt;typeof toggleVariants&gt;
+&gt;(({ className, children, variant, size, ...props }, ref) =&gt; {
+  const context = React.useContext(ToggleGroupContext)
+
+  return (
+    &lt;ToggleGroupPrimitive.Item
+      ref={ref}
+      className={cn(
+        toggleVariants({
+          variant: context.variant || variant,
+          size: context.size || size,
+        }),
+        className
+      )}
+      {...props}
+    &gt;
+      {children}
+    &lt;/ToggleGroupPrimitive.Item&gt;
+  )
+})
+
+ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName
+
+export { ToggleGroup, ToggleGroupItem }
+</code></pre>
+</body>
+</html>

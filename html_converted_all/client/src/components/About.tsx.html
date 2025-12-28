@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>About.tsx</h1>
+  <pre><code class="language-tsx">import { motion } from "framer-motion";
+import profileImagePath from "@assets/WhatsApp_Image_2025-10-23_at_23.25.29_2883af38_1766655548331.jpg";
+
+export function About() {
+  return (
+    &lt;section id="about" className="py-24 bg-white"&gt;
+      &lt;div className="container mx-auto px-4 max-w-5xl"&gt;
+        &lt;motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        &gt;
+          &lt;div className="text-center mb-16"&gt;
+            &lt;h2 className="text-3xl md:text-4xl font-bold text-[#2c3e50] mb-2 font-display"&gt;
+              About Me
+            &lt;/h2&gt;
+            &lt;div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" /&gt;
+          &lt;/div&gt;
+          
+          &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12"&gt;
+            {/* Image */}
+            &lt;motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex justify-center"
+            &gt;
+              &lt;div className="w-full max-w-sm"&gt;
+                &lt;img
+                  src={profileImagePath}
+                  alt="Profile"
+                  className="w-full rounded-2xl shadow-lg"
+                  data-testid="img-profile"
+                /&gt;
+              &lt;/div&gt;
+            &lt;/motion.div&gt;
+            
+            {/* Text Content */}
+            &lt;motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            &gt;
+              &lt;p className="text-lg text-gray-600 leading-relaxed mb-6"&gt;
+                I'm &lt;span className="text-[#3498db] font-semibold"&gt;Muhammed Taher Khan&lt;/span&gt;, a passionate Computer Science Engineering student based in Sylhet, Bangladesh. 
+                My journey in technology is driven by curiosity and a relentless desire to create. 
+                I specialize in building clean, functional, and user-friendly web applications.
+              &lt;/p&gt;
+              &lt;p className="text-lg text-gray-600 leading-relaxed mb-8"&gt;
+                Whether it's solving complex algorithms or crafting pixel-perfect interfaces, 
+                I approach every challenge with enthusiasm and dedication. I am constantly learning 
+                new technologies to stay ahead in this ever-evolving field.
+              &lt;/p&gt;
+              &lt;a
+                href="https://wa.me/+8801946325530"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 bg-[#3498db] text-white font-bold rounded-full shadow-lg shadow-[#3498db]/30 hover:shadow-xl hover:bg-[#2980b9] hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider text-sm"
+                data-testid="button-whatsapp"
+              &gt;
+                Connect on WhatsApp
+              &lt;/a&gt;
+            &lt;/motion.div&gt;
+          &lt;/div&gt;
+          
+          &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-8"&gt;
+            &lt;motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:shadow-md transition-shadow"
+            &gt;
+              &lt;h3 className="text-xl font-bold text-[#2c3e50] mb-2"&gt;Dedication&lt;/h3&gt;
+              &lt;p className="text-gray-500 text-sm"&gt;Committed to delivering high-quality code and solutions.&lt;/p&gt;
+            &lt;/motion.div&gt;
+            &lt;motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:shadow-md transition-shadow"
+            &gt;
+              &lt;h3 className="text-xl font-bold text-[#2c3e50] mb-2"&gt;Innovation&lt;/h3&gt;
+              &lt;p className="text-gray-500 text-sm"&gt;Always looking for better, smarter ways to solve problems.&lt;/p&gt;
+            &lt;/motion.div&gt;
+            &lt;motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:shadow-md transition-shadow"
+            &gt;
+              &lt;h3 className="text-xl font-bold text-[#2c3e50] mb-2"&gt;Collaboration&lt;/h3&gt;
+              &lt;p className="text-gray-500 text-sm"&gt;Thriving in team environments and valuing diverse perspectives.&lt;/p&gt;
+            &lt;/motion.div&gt;
+          &lt;/div&gt;
+        &lt;/motion.div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre>
+</body>
+</html>

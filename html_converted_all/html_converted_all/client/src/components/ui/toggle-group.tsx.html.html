@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toggle-group.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>toggle-group.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;toggle-group.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;toggle-group.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;"use client"
+
+import * as React from "react"
+import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
+import { type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+import { toggleVariants } from "@/components/ui/toggle"
+
+const ToggleGroupContext = React.createContext&amp;lt;
+  VariantProps&amp;lt;typeof toggleVariants&amp;gt;
+&amp;gt;({
+  size: "default",
+  variant: "default",
+})
+
+const ToggleGroup = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof ToggleGroupPrimitive.Root&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof ToggleGroupPrimitive.Root&amp;gt; &amp;amp;
+    VariantProps&amp;lt;typeof toggleVariants&amp;gt;
+&amp;gt;(({ className, variant, size, children, ...props }, ref) =&amp;gt; (
+  &amp;lt;ToggleGroupPrimitive.Root
+    ref={ref}
+    className={cn("flex items-center justify-center gap-1", className)}
+    {...props}
+  &amp;gt;
+    &amp;lt;ToggleGroupContext.Provider value={{ variant, size }}&amp;gt;
+      {children}
+    &amp;lt;/ToggleGroupContext.Provider&amp;gt;
+  &amp;lt;/ToggleGroupPrimitive.Root&amp;gt;
+))
+
+ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName
+
+const ToggleGroupItem = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof ToggleGroupPrimitive.Item&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof ToggleGroupPrimitive.Item&amp;gt; &amp;amp;
+    VariantProps&amp;lt;typeof toggleVariants&amp;gt;
+&amp;gt;(({ className, children, variant, size, ...props }, ref) =&amp;gt; {
+  const context = React.useContext(ToggleGroupContext)
+
+  return (
+    &amp;lt;ToggleGroupPrimitive.Item
+      ref={ref}
+      className={cn(
+        toggleVariants({
+          variant: context.variant || variant,
+          size: context.size || size,
+        }),
+        className
+      )}
+      {...props}
+    &amp;gt;
+      {children}
+    &amp;lt;/ToggleGroupPrimitive.Item&amp;gt;
+  )
+})
+
+ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName
+
+export { ToggleGroup, ToggleGroupItem }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

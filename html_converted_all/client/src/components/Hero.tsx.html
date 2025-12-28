@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Hero.tsx</h1>
+  <pre><code class="language-tsx">import { motion } from "framer-motion";
+
+export function Hero() {
+  return (
+    &lt;section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    &gt;
+      {/* Background Image with Overlay */}
+      &lt;div className="absolute inset-0 z-0"&gt;
+        &lt;div className="absolute inset-0 bg-[#2c3e50]/80 mix-blend-multiply z-10" /&gt;
+        {/* Hero scenic background */}
+        &lt;img
+          src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80"
+          alt="Coding Workspace"
+          className="w-full h-full object-cover"
+        /&gt;
+      &lt;/div&gt;
+
+      {/* Content */}
+      &lt;div className="relative z-20 container mx-auto px-4 text-center"&gt;
+        &lt;motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        &gt;
+          &lt;h2 className="text-xl md:text-2xl font-light text-gray-300 mb-4 font-sans"&gt;
+            Hello, Welcome
+          &lt;/h2&gt;
+          &lt;h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-display leading-tight"&gt;
+            I'm &lt;span className="text-[#3498db]"&gt;Taher&lt;/span&gt;
+          &lt;/h1&gt;
+          &lt;p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed"&gt;
+            Architecting Logic, Designing Pixels: Crafting Seamless Digital Experiences.
+          &lt;/p&gt;
+          
+          &lt;a
+            href="https://wa.me/8801946325530"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 bg-[#3498db] text-white font-bold rounded-full shadow-lg shadow-[#3498db]/30 hover:shadow-xl hover:bg-[#2980b9] hover:-translate-y-1 transition-all duration-300 cursor-pointer uppercase tracking-wider text-sm"
+          &gt;
+            Hire Me
+          &lt;/a&gt;
+        &lt;/motion.div&gt;
+      &lt;/div&gt;
+
+      {/* Scroll Indicator */}
+      &lt;motion.div
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white/50"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+      &gt;
+        &lt;div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1"&gt;
+          &lt;div className="w-1 h-2 bg-white/50 rounded-full" /&gt;
+        &lt;/div&gt;
+      &lt;/motion.div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre>
+</body>
+</html>

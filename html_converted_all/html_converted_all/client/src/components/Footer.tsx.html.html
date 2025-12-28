@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Footer.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Footer.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Footer.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import { Link } from "react-scroll";
+import { ChevronUp } from "lucide-react";
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    &amp;lt;footer className="bg-[#2c3e50] text-white py-12 border-t border-white/5 relative"&amp;gt;
+      &amp;lt;div className="container mx-auto px-4 text-center"&amp;gt;
+        &amp;lt;div className="mb-6"&amp;gt;
+          &amp;lt;Link
+            to="hero"
+            smooth={true}
+            duration={500}
+            className="inline-flex items-center justify-center w-12 h-12 bg-[#3498db] rounded-full text-white cursor-pointer hover:bg-white hover:text-[#3498db] transition-all duration-300 mb-8 absolute -top-6 left-1/2 transform -translate-x-1/2 shadow-lg"
+          &amp;gt;
+            &amp;lt;ChevronUp size={24} /&amp;gt;
+          &amp;lt;/Link&amp;gt;
+        &amp;lt;/div&amp;gt;
+        
+        &amp;lt;div className="text-2xl font-bold font-display tracking-tighter mb-6"&amp;gt;
+          MTK&amp;lt;span className="text-[#3498db]"&amp;gt;.&amp;lt;/span&amp;gt;
+        &amp;lt;/div&amp;gt;
+
+        &amp;lt;p className="text-gray-400 font-light text-sm"&amp;gt;
+          &amp;amp;copy; {currentYear} Muhammed Taher Khan. All rights reserved.
+        &amp;lt;/p&amp;gt;
+        &amp;lt;p className="text-gray-500 text-xs mt-2"&amp;gt;
+          Designed &amp;amp; Built with ❤️ in React &amp;amp; Tailwind
+        &amp;lt;/p&amp;gt;
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/footer&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

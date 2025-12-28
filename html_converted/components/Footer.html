@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Footer.tsx</h1>
+  <pre><code class="language-tsx">import { Link } from "react-scroll";
+import { ChevronUp } from "lucide-react";
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    &lt;footer className="bg-[#2c3e50] text-white py-12 border-t border-white/5 relative"&gt;
+      &lt;div className="container mx-auto px-4 text-center"&gt;
+        &lt;div className="mb-6"&gt;
+          &lt;Link
+            to="hero"
+            smooth={true}
+            duration={500}
+            className="inline-flex items-center justify-center w-12 h-12 bg-[#3498db] rounded-full text-white cursor-pointer hover:bg-white hover:text-[#3498db] transition-all duration-300 mb-8 absolute -top-6 left-1/2 transform -translate-x-1/2 shadow-lg"
+          &gt;
+            &lt;ChevronUp size={24} /&gt;
+          &lt;/Link&gt;
+        &lt;/div&gt;
+        
+        &lt;div className="text-2xl font-bold font-display tracking-tighter mb-6"&gt;
+          MTK&lt;span className="text-[#3498db]"&gt;.&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;p className="text-gray-400 font-light text-sm"&gt;
+          &amp;copy; {currentYear} Muhammed Taher Khan. All rights reserved.
+        &lt;/p&gt;
+        &lt;p className="text-gray-500 text-xs mt-2"&gt;
+          Designed &amp; Built with ❤️ in React &amp; Tailwind
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  );
+}
+</code></pre>
+</body>
+</html>

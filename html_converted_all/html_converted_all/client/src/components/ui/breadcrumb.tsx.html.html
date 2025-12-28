@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>breadcrumb.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>breadcrumb.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;breadcrumb.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;breadcrumb.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { ChevronRight, MoreHorizontal } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const Breadcrumb = React.forwardRef&amp;lt;
+  HTMLElement,
+  React.ComponentPropsWithoutRef&amp;lt;"nav"&amp;gt; &amp;amp; {
+    separator?: React.ReactNode
+  }
+&amp;gt;(({ ...props }, ref) =&amp;gt; &amp;lt;nav ref={ref} aria-label="breadcrumb" {...props} /&amp;gt;)
+Breadcrumb.displayName = "Breadcrumb"
+
+const BreadcrumbList = React.forwardRef&amp;lt;
+  HTMLOListElement,
+  React.ComponentPropsWithoutRef&amp;lt;"ol"&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;ol
+    ref={ref}
+    className={cn(
+      "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
+      className
+    )}
+    {...props}
+  /&amp;gt;
+))
+BreadcrumbList.displayName = "BreadcrumbList"
+
+const BreadcrumbItem = React.forwardRef&amp;lt;
+  HTMLLIElement,
+  React.ComponentPropsWithoutRef&amp;lt;"li"&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;li
+    ref={ref}
+    className={cn("inline-flex items-center gap-1.5", className)}
+    {...props}
+  /&amp;gt;
+))
+BreadcrumbItem.displayName = "BreadcrumbItem"
+
+const BreadcrumbLink = React.forwardRef&amp;lt;
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef&amp;lt;"a"&amp;gt; &amp;amp; {
+    asChild?: boolean
+  }
+&amp;gt;(({ asChild, className, ...props }, ref) =&amp;gt; {
+  const Comp = asChild ? Slot : "a"
+
+  return (
+    &amp;lt;Comp
+      ref={ref}
+      className={cn("transition-colors hover:text-foreground", className)}
+      {...props}
+    /&amp;gt;
+  )
+})
+BreadcrumbLink.displayName = "BreadcrumbLink"
+
+const BreadcrumbPage = React.forwardRef&amp;lt;
+  HTMLSpanElement,
+  React.ComponentPropsWithoutRef&amp;lt;"span"&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;span
+    ref={ref}
+    role="link"
+    aria-disabled="true"
+    aria-current="page"
+    className={cn("font-normal text-foreground", className)}
+    {...props}
+  /&amp;gt;
+))
+BreadcrumbPage.displayName = "BreadcrumbPage"
+
+const BreadcrumbSeparator = ({
+  children,
+  className,
+  ...props
+}: React.ComponentProps&amp;lt;"li"&amp;gt;) =&amp;gt; (
+  &amp;lt;li
+    role="presentation"
+    aria-hidden="true"
+    className={cn("[&amp;amp;&amp;gt;svg]:w-3.5 [&amp;amp;&amp;gt;svg]:h-3.5", className)}
+    {...props}
+  &amp;gt;
+    {children ?? &amp;lt;ChevronRight /&amp;gt;}
+  &amp;lt;/li&amp;gt;
+)
+BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
+
+const BreadcrumbEllipsis = ({
+  className,
+  ...props
+}: React.ComponentProps&amp;lt;"span"&amp;gt;) =&amp;gt; (
+  &amp;lt;span
+    role="presentation"
+    aria-hidden="true"
+    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    {...props}
+  &amp;gt;
+    &amp;lt;MoreHorizontal className="h-4 w-4" /&amp;gt;
+    &amp;lt;span className="sr-only"&amp;gt;More&amp;lt;/span&amp;gt;
+  &amp;lt;/span&amp;gt;
+)
+BreadcrumbEllipsis.displayName = "BreadcrumbElipssis"
+
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

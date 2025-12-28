@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>accordion.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>accordion.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;accordion.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;accordion.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import * as React from "react"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { ChevronDown } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const Accordion = AccordionPrimitive.Root
+
+const AccordionItem = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof AccordionPrimitive.Item&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof AccordionPrimitive.Item&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;AccordionPrimitive.Item
+    ref={ref}
+    className={cn("border-b", className)}
+    {...props}
+  /&amp;gt;
+))
+AccordionItem.displayName = "AccordionItem"
+
+const AccordionTrigger = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof AccordionPrimitive.Trigger&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof AccordionPrimitive.Trigger&amp;gt;
+&amp;gt;(({ className, children, ...props }, ref) =&amp;gt; (
+  &amp;lt;AccordionPrimitive.Header className="flex"&amp;gt;
+    &amp;lt;AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;amp;[data-state=open]&amp;gt;svg]:rotate-180",
+        className
+      )}
+      {...props}
+    &amp;gt;
+      {children}
+      &amp;lt;ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" /&amp;gt;
+    &amp;lt;/AccordionPrimitive.Trigger&amp;gt;
+  &amp;lt;/AccordionPrimitive.Header&amp;gt;
+))
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+
+const AccordionContent = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof AccordionPrimitive.Content&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof AccordionPrimitive.Content&amp;gt;
+&amp;gt;(({ className, children, ...props }, ref) =&amp;gt; (
+  &amp;lt;AccordionPrimitive.Content
+    ref={ref}
+    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    {...props}
+  &amp;gt;
+    &amp;lt;div className={cn("pb-4 pt-0", className)}&amp;gt;{children}&amp;lt;/div&amp;gt;
+  &amp;lt;/AccordionPrimitive.Content&amp;gt;
+))
+
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

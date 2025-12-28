@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>skeleton.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>skeleton.tsx</h1>
+  <pre><code class="language-tsx">import { cn } from "@/lib/utils"
+
+function Skeleton({
+  className,
+  ...props
+}: React.HTMLAttributes&lt;HTMLDivElement&gt;) {
+  return (
+    &lt;div
+      className={cn("animate-pulse rounded-md bg-muted", className)}
+      {...props}
+    /&gt;
+  )
+}
+
+export { Skeleton }
+</code></pre>
+</body>
+</html>

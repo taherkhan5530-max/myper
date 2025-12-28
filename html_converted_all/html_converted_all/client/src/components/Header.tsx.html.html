@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Header.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Header.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Header.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() =&amp;gt; {
+    const handleScroll = () =&amp;gt; {
+      setScrolled(window.scrollY &amp;gt; 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () =&amp;gt; window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "HOME", to: "/" },
+    { name: "ABOUT", to: "/about" },
+    { name: "SERVICES", to: "/services" },
+    { name: "SKILLS", to: "/skills" },
+    { name: "CONTACT", to: "/contact" },
+  ];
+
+  return (
+    &amp;lt;header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled || location !== "/" ? "bg-[#2c3e50] shadow-lg py-4" : "bg-transparent py-6"
+      }`}
+    &amp;gt;
+      &amp;lt;div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"&amp;gt;
+        {/* Logo */}
+        &amp;lt;Link href="/" className="text-2xl font-bold font-display tracking-tighter text-white cursor-pointer"&amp;gt;
+          MTK&amp;lt;span className="text-[#3498db]"&amp;gt;.&amp;lt;/span&amp;gt;
+        &amp;lt;/Link&amp;gt;
+
+        {/* Desktop Nav */}
+        &amp;lt;nav className="hidden md:flex space-x-8"&amp;gt;
+          {navLinks.map((link) =&amp;gt; (
+            &amp;lt;Link
+              key={link.name}
+              href={link.to}
+              className={`${
+                location === link.to ? "text-[#3498db]" : "text-white"
+              } hover:text-[#3498db] transition-colors cursor-pointer text-sm font-medium tracking-wide uppercase`}
+            &amp;gt;
+              {link.name}
+            &amp;lt;/Link&amp;gt;
+          ))}
+        &amp;lt;/nav&amp;gt;
+
+        {/* Mobile Menu Button */}
+        &amp;lt;button
+          className="md:hidden text-white focus:outline-none"
+          onClick={() =&amp;gt; setIsOpen(!isOpen)}
+        &amp;gt;
+          {isOpen ? &amp;lt;X className="h-6 w-6" /&amp;gt; : &amp;lt;Menu className="h-6 w-6" /&amp;gt;}
+        &amp;lt;/button&amp;gt;
+      &amp;lt;/div&amp;gt;
+
+      {/* Mobile Nav */}
+      &amp;lt;AnimatePresence&amp;gt;
+        {isOpen &amp;amp;&amp;amp; (
+          &amp;lt;motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-[#2c3e50] border-t border-white/10"
+          &amp;gt;
+            &amp;lt;div className="px-4 py-4 space-y-4 flex flex-col"&amp;gt;
+              {navLinks.map((link) =&amp;gt; (
+                &amp;lt;Link
+                  key={link.name}
+                  href={link.to}
+                  onClick={() =&amp;gt; setIsOpen(false)}
+                  className={`${
+                    location === link.to ? "text-[#3498db]" : "text-white"
+                  } hover:text-[#3498db] cursor-pointer text-lg font-medium`}
+                &amp;gt;
+                  {link.name}
+                &amp;lt;/Link&amp;gt;
+              ))}
+            &amp;lt;/div&amp;gt;
+          &amp;lt;/motion.div&amp;gt;
+        )}
+      &amp;lt;/AnimatePresence&amp;gt;
+    &amp;lt;/header&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

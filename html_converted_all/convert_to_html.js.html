@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>convert_to_html.js</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>convert_to_html.js</h1>
+  <pre><code class="language-js">import { readdir, readFile, writeFile, mkdir } from 'fs/promises';
+import { join, extname, basename, dirname } from 'path';
+
+async function convertToHtml(dir, outputDir) {
+  const files = await readdir(dir, { withFileTypes: true });
+  for (const file of files) {
+    const fullPath = join(dir, file.name);
+    if (file.isDirectory() &amp;&amp; !['node_modules', '.git', 'dist', 'html_converted'].includes(file.name)) {
+      await convertToHtml(fullPath, join(outputDir, file.name));
+    } else if (['.tsx', '.ts', '.js', '.jsx', '.json', '.md', '.css', '.html'].includes(extname(file.name)) &amp;&amp; !file.name.endsWith('.zip')) {
+      const content = await readFile(fullPath, 'utf-8');
+      const lang = extname(file.name).slice(1);
+      const htmlContent = `&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;${file.name}&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;${file.name}&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="${lang ? `language-${lang}` : ''}"&gt;${content.replace(/&amp;/g, '&amp;amp;').replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;')}&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;`;
+      const outputPath = join(outputDir, file.name + '.html');
+      await mkdir(dirname(outputPath), { recursive: true });
+      await writeFile(outputPath, htmlContent);
+    }
+  }
+}
+
+const inputDir = '.';
+const outputDir = './html_converted_all';
+
+await mkdir(outputDir, { recursive: true });
+await convertToHtml(inputDir, outputDir);
+console.log('Conversion complete');</code></pre>
+</body>
+</html>

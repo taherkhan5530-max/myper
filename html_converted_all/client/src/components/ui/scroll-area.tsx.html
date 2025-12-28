@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scroll-area.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>scroll-area.tsx</h1>
+  <pre><code class="language-tsx">import * as React from "react"
+import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
+
+import { cn } from "@/lib/utils"
+
+const ScrollArea = React.forwardRef&lt;
+  React.ElementRef&lt;typeof ScrollAreaPrimitive.Root&gt;,
+  React.ComponentPropsWithoutRef&lt;typeof ScrollAreaPrimitive.Root&gt;
+&gt;(({ className, children, ...props }, ref) =&gt; (
+  &lt;ScrollAreaPrimitive.Root
+    ref={ref}
+    className={cn("relative overflow-hidden", className)}
+    {...props}
+  &gt;
+    &lt;ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]"&gt;
+      {children}
+    &lt;/ScrollAreaPrimitive.Viewport&gt;
+    &lt;ScrollBar /&gt;
+    &lt;ScrollAreaPrimitive.Corner /&gt;
+  &lt;/ScrollAreaPrimitive.Root&gt;
+))
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
+
+const ScrollBar = React.forwardRef&lt;
+  React.ElementRef&lt;typeof ScrollAreaPrimitive.ScrollAreaScrollbar&gt;,
+  React.ComponentPropsWithoutRef&lt;typeof ScrollAreaPrimitive.ScrollAreaScrollbar&gt;
+&gt;(({ className, orientation = "vertical", ...props }, ref) =&gt; (
+  &lt;ScrollAreaPrimitive.ScrollAreaScrollbar
+    ref={ref}
+    orientation={orientation}
+    className={cn(
+      "flex touch-none select-none transition-colors",
+      orientation === "vertical" &amp;&amp;
+        "h-full w-2.5 border-l border-l-transparent p-[1px]",
+      orientation === "horizontal" &amp;&amp;
+        "h-2.5 flex-col border-t border-t-transparent p-[1px]",
+      className
+    )}
+    {...props}
+  &gt;
+    &lt;ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" /&gt;
+  &lt;/ScrollAreaPrimitive.ScrollAreaScrollbar&gt;
+))
+ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
+
+export { ScrollArea, ScrollBar }
+</code></pre>
+</body>
+</html>

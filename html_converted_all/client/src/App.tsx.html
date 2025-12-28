@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>App.tsx</h1>
+  <pre><code class="language-tsx">import { Switch, Route } from "wouter";
+import { queryClient } from "./lib/queryClient";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import Home from "@/pages/Home";
+import About from "@/pages/About";
+import Services from "@/pages/Services";
+import Skills from "@/pages/Skills";
+import Contact from "@/pages/Contact";
+import NotFound from "@/pages/not-found";
+
+function Router() {
+  return (
+    &lt;Switch&gt;
+      &lt;Route path="/" component={Home} /&gt;
+      &lt;Route path="/about" component={About} /&gt;
+      &lt;Route path="/services" component={Services} /&gt;
+      &lt;Route path="/skills" component={Skills} /&gt;
+      &lt;Route path="/contact" component={Contact} /&gt;
+      &lt;Route component={NotFound} /&gt;
+    &lt;/Switch&gt;
+  );
+}
+
+function App() {
+  return (
+    &lt;QueryClientProvider client={queryClient}&gt;
+      &lt;TooltipProvider&gt;
+        &lt;Router /&gt;
+        &lt;Toaster /&gt;
+      &lt;/TooltipProvider&gt;
+    &lt;/QueryClientProvider&gt;
+  );
+}
+
+export default App;
+</code></pre>
+</body>
+</html>

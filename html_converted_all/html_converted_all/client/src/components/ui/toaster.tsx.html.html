@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toaster.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>toaster.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;toaster.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;toaster.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import { useToast } from "@/hooks/use-toast"
+import {
+  Toast,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+} from "@/components/ui/toast"
+
+export function Toaster() {
+  const { toasts } = useToast()
+
+  return (
+    &amp;lt;ToastProvider&amp;gt;
+      {toasts.map(function ({ id, title, description, action, ...props }) {
+        return (
+          &amp;lt;Toast key={id} {...props}&amp;gt;
+            &amp;lt;div className="grid gap-1"&amp;gt;
+              {title &amp;amp;&amp;amp; &amp;lt;ToastTitle&amp;gt;{title}&amp;lt;/ToastTitle&amp;gt;}
+              {description &amp;amp;&amp;amp; (
+                &amp;lt;ToastDescription&amp;gt;{description}&amp;lt;/ToastDescription&amp;gt;
+              )}
+            &amp;lt;/div&amp;gt;
+            {action}
+            &amp;lt;ToastClose /&amp;gt;
+          &amp;lt;/Toast&amp;gt;
+        )
+      })}
+      &amp;lt;ToastViewport /&amp;gt;
+    &amp;lt;/ToastProvider&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

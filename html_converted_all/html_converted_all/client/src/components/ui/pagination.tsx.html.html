@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pagination.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>pagination.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;pagination.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;pagination.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import * as React from "react"
+import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { ButtonProps, buttonVariants } from "@/components/ui/button"
+
+const Pagination = ({ className, ...props }: React.ComponentProps&amp;lt;"nav"&amp;gt;) =&amp;gt; (
+  &amp;lt;nav
+    role="navigation"
+    aria-label="pagination"
+    className={cn("mx-auto flex w-full justify-center", className)}
+    {...props}
+  /&amp;gt;
+)
+Pagination.displayName = "Pagination"
+
+const PaginationContent = React.forwardRef&amp;lt;
+  HTMLUListElement,
+  React.ComponentProps&amp;lt;"ul"&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;ul
+    ref={ref}
+    className={cn("flex flex-row items-center gap-1", className)}
+    {...props}
+  /&amp;gt;
+))
+PaginationContent.displayName = "PaginationContent"
+
+const PaginationItem = React.forwardRef&amp;lt;
+  HTMLLIElement,
+  React.ComponentProps&amp;lt;"li"&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;li ref={ref} className={cn("", className)} {...props} /&amp;gt;
+))
+PaginationItem.displayName = "PaginationItem"
+
+type PaginationLinkProps = {
+  isActive?: boolean
+} &amp;amp; Pick&amp;lt;ButtonProps, "size"&amp;gt; &amp;amp;
+  React.ComponentProps&amp;lt;"a"&amp;gt;
+
+const PaginationLink = ({
+  className,
+  isActive,
+  size = "icon",
+  ...props
+}: PaginationLinkProps) =&amp;gt; (
+  &amp;lt;a
+    aria-current={isActive ? "page" : undefined}
+    className={cn(
+      buttonVariants({
+        variant: isActive ? "outline" : "ghost",
+        size,
+      }),
+      className
+    )}
+    {...props}
+  /&amp;gt;
+)
+PaginationLink.displayName = "PaginationLink"
+
+const PaginationPrevious = ({
+  className,
+  ...props
+}: React.ComponentProps&amp;lt;typeof PaginationLink&amp;gt;) =&amp;gt; (
+  &amp;lt;PaginationLink
+    aria-label="Go to previous page"
+    size="default"
+    className={cn("gap-1 pl-2.5", className)}
+    {...props}
+  &amp;gt;
+    &amp;lt;ChevronLeft className="h-4 w-4" /&amp;gt;
+    &amp;lt;span&amp;gt;Previous&amp;lt;/span&amp;gt;
+  &amp;lt;/PaginationLink&amp;gt;
+)
+PaginationPrevious.displayName = "PaginationPrevious"
+
+const PaginationNext = ({
+  className,
+  ...props
+}: React.ComponentProps&amp;lt;typeof PaginationLink&amp;gt;) =&amp;gt; (
+  &amp;lt;PaginationLink
+    aria-label="Go to next page"
+    size="default"
+    className={cn("gap-1 pr-2.5", className)}
+    {...props}
+  &amp;gt;
+    &amp;lt;span&amp;gt;Next&amp;lt;/span&amp;gt;
+    &amp;lt;ChevronRight className="h-4 w-4" /&amp;gt;
+  &amp;lt;/PaginationLink&amp;gt;
+)
+PaginationNext.displayName = "PaginationNext"
+
+const PaginationEllipsis = ({
+  className,
+  ...props
+}: React.ComponentProps&amp;lt;"span"&amp;gt;) =&amp;gt; (
+  &amp;lt;span
+    aria-hidden
+    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    {...props}
+  &amp;gt;
+    &amp;lt;MoreHorizontal className="h-4 w-4" /&amp;gt;
+    &amp;lt;span className="sr-only"&amp;gt;More pages&amp;lt;/span&amp;gt;
+  &amp;lt;/span&amp;gt;
+)
+PaginationEllipsis.displayName = "PaginationEllipsis"
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

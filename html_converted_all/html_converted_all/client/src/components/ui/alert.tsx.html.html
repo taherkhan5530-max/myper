@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>alert.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>alert.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;alert.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;alert.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const alertVariants = cva(
+  "relative w-full rounded-lg border p-4 [&amp;amp;&amp;gt;svg~*]:pl-7 [&amp;amp;&amp;gt;svg+div]:translate-y-[-3px] [&amp;amp;&amp;gt;svg]:absolute [&amp;amp;&amp;gt;svg]:left-4 [&amp;amp;&amp;gt;svg]:top-4 [&amp;amp;&amp;gt;svg]:text-foreground",
+  {
+    variants: {
+      variant: {
+        default: "bg-background text-foreground",
+        destructive:
+          "border-destructive/50 text-destructive dark:border-destructive [&amp;amp;&amp;gt;svg]:text-destructive",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+const Alert = React.forwardRef&amp;lt;
+  HTMLDivElement,
+  React.HTMLAttributes&amp;lt;HTMLDivElement&amp;gt; &amp;amp; VariantProps&amp;lt;typeof alertVariants&amp;gt;
+&amp;gt;(({ className, variant, ...props }, ref) =&amp;gt; (
+  &amp;lt;div
+    ref={ref}
+    role="alert"
+    className={cn(alertVariants({ variant }), className)}
+    {...props}
+  /&amp;gt;
+))
+Alert.displayName = "Alert"
+
+const AlertTitle = React.forwardRef&amp;lt;
+  HTMLParagraphElement,
+  React.HTMLAttributes&amp;lt;HTMLHeadingElement&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;h5
+    ref={ref}
+    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
+    {...props}
+  /&amp;gt;
+))
+AlertTitle.displayName = "AlertTitle"
+
+const AlertDescription = React.forwardRef&amp;lt;
+  HTMLParagraphElement,
+  React.HTMLAttributes&amp;lt;HTMLParagraphElement&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;div
+    ref={ref}
+    className={cn("text-sm [&amp;amp;_p]:leading-relaxed", className)}
+    {...props}
+  /&amp;gt;
+))
+AlertDescription.displayName = "AlertDescription"
+
+export { Alert, AlertTitle, AlertDescription }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

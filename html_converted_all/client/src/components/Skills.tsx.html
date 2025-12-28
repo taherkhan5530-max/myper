@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Skills.tsx</h1>
+  <pre><code class="language-tsx">import { useSkills } from "@/hooks/use-portfolio";
+import { motion } from "framer-motion";
+import * as FaIcons from "react-icons/fa";
+import * as SiIcons from "react-icons/si";
+import * as IoIcons from "react-icons/io5";
+import { IconType } from "react-icons";
+
+// Helper to resolve icon string to component
+const getIconComponent = (iconName: string): IconType =&gt; {
+  // @ts-ignore
+  const Icon = FaIcons[iconName] || SiIcons[iconName] || IoIcons[iconName];
+  return Icon || FaIcons.FaCode; // Fallback
+};
+
+export function Skills() {
+  const { data: skills, isLoading } = useSkills();
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
+  return (
+    &lt;section id="skills" className="py-24 bg-[#f4f4f4]"&gt;
+      &lt;div className="container mx-auto px-4 max-w-6xl"&gt;
+        &lt;div className="text-center mb-16"&gt;
+          &lt;h2 className="text-3xl md:text-4xl font-bold text-[#2c3e50] mb-2 font-display"&gt;
+            My Skills
+          &lt;/h2&gt;
+          &lt;div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" /&gt;
+        &lt;/div&gt;
+
+        {isLoading ? (
+          &lt;div className="grid grid-cols-2 md:grid-cols-4 gap-6"&gt;
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) =&gt; (
+              &lt;div key={i} className="h-40 bg-gray-200 rounded-xl animate-pulse" /&gt;
+            ))}
+          &lt;/div&gt;
+        ) : (
+          &lt;motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
+          &gt;
+            {skills?.map((skill) =&gt; {
+              const Icon = getIconComponent(skill.icon);
+              return (
+                &lt;motion.div
+                  key={skill.id}
+                  variants={item}
+                  className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-[#3498db]/20 group flex flex-col items-center justify-center text-center h-full min-h-[220px]"
+                &gt;
+                  &lt;div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-[#3498db] transition-all duration-300"&gt;
+                    &lt;Icon className="text-3xl text-[#3498db] group-hover:text-white transition-colors duration-300" /&gt;
+                  &lt;/div&gt;
+                  &lt;h3 className="text-lg font-bold text-[#2c3e50] mb-2"&gt;{skill.name}&lt;/h3&gt;
+                  &lt;p className="text-xs text-gray-400 uppercase tracking-[0.2em] font-bold"&gt;
+                    {skill.category}
+                  &lt;/p&gt;
+                &lt;/motion.div&gt;
+              );
+            })}
+          &lt;/motion.div&gt;
+        )}
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre>
+</body>
+</html>

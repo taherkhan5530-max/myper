@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Hero.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Hero.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hero.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import { motion } from "framer-motion";
+
+export function Hero() {
+  return (
+    &amp;lt;section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    &amp;gt;
+      {/* Background Image with Overlay */}
+      &amp;lt;div className="absolute inset-0 z-0"&amp;gt;
+        &amp;lt;div className="absolute inset-0 bg-[#2c3e50]/80 mix-blend-multiply z-10" /&amp;gt;
+        {/* Hero scenic background */}
+        &amp;lt;img
+          src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1920&amp;amp;q=80"
+          alt="Coding Workspace"
+          className="w-full h-full object-cover"
+        /&amp;gt;
+      &amp;lt;/div&amp;gt;
+
+      {/* Content */}
+      &amp;lt;div className="relative z-20 container mx-auto px-4 text-center"&amp;gt;
+        &amp;lt;motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        &amp;gt;
+          &amp;lt;h2 className="text-xl md:text-2xl font-light text-gray-300 mb-4 font-sans"&amp;gt;
+            Hello, Welcome
+          &amp;lt;/h2&amp;gt;
+          &amp;lt;h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-display leading-tight"&amp;gt;
+            I'm &amp;lt;span className="text-[#3498db]"&amp;gt;Taher&amp;lt;/span&amp;gt;
+          &amp;lt;/h1&amp;gt;
+          &amp;lt;p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed"&amp;gt;
+            Architecting Logic, Designing Pixels: Crafting Seamless Digital Experiences.
+          &amp;lt;/p&amp;gt;
+          
+          &amp;lt;a
+            href="https://wa.me/8801946325530"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 bg-[#3498db] text-white font-bold rounded-full shadow-lg shadow-[#3498db]/30 hover:shadow-xl hover:bg-[#2980b9] hover:-translate-y-1 transition-all duration-300 cursor-pointer uppercase tracking-wider text-sm"
+          &amp;gt;
+            Hire Me
+          &amp;lt;/a&amp;gt;
+        &amp;lt;/motion.div&amp;gt;
+      &amp;lt;/div&amp;gt;
+
+      {/* Scroll Indicator */}
+      &amp;lt;motion.div
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white/50"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+      &amp;gt;
+        &amp;lt;div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1"&amp;gt;
+          &amp;lt;div className="w-1 h-2 bg-white/50 rounded-full" /&amp;gt;
+        &amp;lt;/div&amp;gt;
+      &amp;lt;/motion.div&amp;gt;
+    &amp;lt;/section&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

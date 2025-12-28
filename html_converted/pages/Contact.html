@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Contact.tsx</h1>
+  <pre><code class="language-tsx">import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Contact as ContactSection } from "@/components/Contact";
+
+export default function ContactPage() {
+  return (
+    &lt;div className="bg-[#f4f4f4] min-h-screen pt-20"&gt;
+      &lt;Header /&gt;
+      &lt;ContactSection /&gt;
+      &lt;Footer /&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+</body>
+</html>

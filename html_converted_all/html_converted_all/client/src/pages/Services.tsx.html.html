@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Services.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Services.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Services.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import { motion } from "framer-motion";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Code, Palette, Laptop, ShoppingCart, ShieldCheck, Database, Bug, Shirt, Presentation } from "lucide-react";
+
+export default function ServicesPage() {
+  const services = [
+    {
+      title: "Web Design &amp;amp; Dev",
+      description: "Custom, responsive websites built with modern technologies to help your business grow online.",
+      icon: Code,
+    },
+    {
+      title: "Logo Design",
+      description: "Unique and memorable brand identities that capture your vision and resonate with your audience.",
+      icon: Palette,
+    },
+    {
+      title: "Shopify Store Design",
+      description: "End-to-end e-commerce solutions to launch and scale your online business successfully.",
+      icon: ShoppingCart,
+    },
+    {
+      title: "Website Bug Hunting",
+      description: "Identifying and resolving critical bugs to ensure your website runs smoothly and securely.",
+      icon: Bug,
+    },
+    {
+      title: "T-shirt Design",
+      description: "Creative and trendy apparel designs that make a statement and stand out.",
+      icon: Shirt,
+    },
+    {
+      title: "Presentation Making",
+      description: "Professional, visually engaging presentations that effectively communicate your message.",
+      icon: Presentation,
+    },
+  ];
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
+  return (
+    &amp;lt;div className="bg-[#f4f4f4] min-h-screen pt-20"&amp;gt;
+      &amp;lt;Header /&amp;gt;
+      &amp;lt;section className="py-24 px-4"&amp;gt;
+        &amp;lt;div className="container mx-auto max-w-6xl text-center"&amp;gt;
+          &amp;lt;motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          &amp;gt;
+            &amp;lt;h2 className="text-3xl md:text-4xl font-bold text-[#2c3e50] mb-2 font-display"&amp;gt;
+              My Services
+            &amp;lt;/h2&amp;gt;
+            &amp;lt;div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" /&amp;gt;
+            &amp;lt;p className="mt-4 text-gray-500"&amp;gt;Professional solutions tailored to your unique requirements.&amp;lt;/p&amp;gt;
+          &amp;lt;/motion.div&amp;gt;
+
+          &amp;lt;motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          &amp;gt;
+            {services.map((service, index) =&amp;gt; (
+              &amp;lt;motion.div
+                key={index}
+                variants={item}
+                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#3498db]/20 flex flex-col items-center text-center group min-h-[320px]"
+              &amp;gt;
+                &amp;lt;div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-[#3498db] transition-colors duration-300"&amp;gt;
+                  &amp;lt;service.icon className="w-8 h-8 text-[#3498db] group-hover:text-white transition-colors duration-300" /&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;h3 className="text-xl font-bold text-[#2c3e50] mb-4"&amp;gt;{service.title}&amp;lt;/h3&amp;gt;
+                &amp;lt;p className="text-gray-500 leading-relaxed flex-1"&amp;gt;{service.description}&amp;lt;/p&amp;gt;
+                &amp;lt;a
+                  href="/contact"
+                  className="mt-6 bg-[#3498db] text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-[#2980b9] transition-colors duration-300"
+                  data-testid="button-book-now"
+                &amp;gt;
+                  Book Now
+                &amp;lt;/a&amp;gt;
+              &amp;lt;/motion.div&amp;gt;
+            ))}
+          &amp;lt;/motion.div&amp;gt;
+        &amp;lt;/div&amp;gt;
+      &amp;lt;/section&amp;gt;
+      &amp;lt;Footer /&amp;gt;
+    &amp;lt;/div&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

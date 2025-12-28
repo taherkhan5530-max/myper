@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Header.tsx</h1>
+  <pre><code class="language-tsx">import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() =&gt; {
+    const handleScroll = () =&gt; {
+      setScrolled(window.scrollY &gt; 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () =&gt; window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "HOME", to: "/" },
+    { name: "ABOUT", to: "/about" },
+    { name: "SERVICES", to: "/services" },
+    { name: "SKILLS", to: "/skills" },
+    { name: "CONTACT", to: "/contact" },
+  ];
+
+  return (
+    &lt;header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled || location !== "/" ? "bg-[#2c3e50] shadow-lg py-4" : "bg-transparent py-6"
+      }`}
+    &gt;
+      &lt;div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"&gt;
+        {/* Logo */}
+        &lt;Link href="/" className="text-2xl font-bold font-display tracking-tighter text-white cursor-pointer"&gt;
+          MTK&lt;span className="text-[#3498db]"&gt;.&lt;/span&gt;
+        &lt;/Link&gt;
+
+        {/* Desktop Nav */}
+        &lt;nav className="hidden md:flex space-x-8"&gt;
+          {navLinks.map((link) =&gt; (
+            &lt;Link
+              key={link.name}
+              href={link.to}
+              className={`${
+                location === link.to ? "text-[#3498db]" : "text-white"
+              } hover:text-[#3498db] transition-colors cursor-pointer text-sm font-medium tracking-wide uppercase`}
+            &gt;
+              {link.name}
+            &lt;/Link&gt;
+          ))}
+        &lt;/nav&gt;
+
+        {/* Mobile Menu Button */}
+        &lt;button
+          className="md:hidden text-white focus:outline-none"
+          onClick={() =&gt; setIsOpen(!isOpen)}
+        &gt;
+          {isOpen ? &lt;X className="h-6 w-6" /&gt; : &lt;Menu className="h-6 w-6" /&gt;}
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      {/* Mobile Nav */}
+      &lt;AnimatePresence&gt;
+        {isOpen &amp;&amp; (
+          &lt;motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-[#2c3e50] border-t border-white/10"
+          &gt;
+            &lt;div className="px-4 py-4 space-y-4 flex flex-col"&gt;
+              {navLinks.map((link) =&gt; (
+                &lt;Link
+                  key={link.name}
+                  href={link.to}
+                  onClick={() =&gt; setIsOpen(false)}
+                  className={`${
+                    location === link.to ? "text-[#3498db]" : "text-white"
+                  } hover:text-[#3498db] cursor-pointer text-lg font-medium`}
+                &gt;
+                  {link.name}
+                &lt;/Link&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/motion.div&gt;
+        )}
+      &lt;/AnimatePresence&gt;
+    &lt;/header&gt;
+  );
+}
+</code></pre>
+</body>
+</html>

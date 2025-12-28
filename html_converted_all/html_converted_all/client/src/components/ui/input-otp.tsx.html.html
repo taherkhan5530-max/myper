@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>input-otp.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>input-otp.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;input-otp.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;input-otp.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import * as React from "react"
+import { OTPInput, OTPInputContext } from "input-otp"
+import { Dot } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const InputOTP = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;typeof OTPInput&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;typeof OTPInput&amp;gt;
+&amp;gt;(({ className, containerClassName, ...props }, ref) =&amp;gt; (
+  &amp;lt;OTPInput
+    ref={ref}
+    containerClassName={cn(
+      "flex items-center gap-2 has-[:disabled]:opacity-50",
+      containerClassName
+    )}
+    className={cn("disabled:cursor-not-allowed", className)}
+    {...props}
+  /&amp;gt;
+))
+InputOTP.displayName = "InputOTP"
+
+const InputOTPGroup = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;"div"&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;"div"&amp;gt;
+&amp;gt;(({ className, ...props }, ref) =&amp;gt; (
+  &amp;lt;div ref={ref} className={cn("flex items-center", className)} {...props} /&amp;gt;
+))
+InputOTPGroup.displayName = "InputOTPGroup"
+
+const InputOTPSlot = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;"div"&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;"div"&amp;gt; &amp;amp; { index: number }
+&amp;gt;(({ index, className, ...props }, ref) =&amp;gt; {
+  const inputOTPContext = React.useContext(OTPInputContext)
+  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
+
+  return (
+    &amp;lt;div
+      ref={ref}
+      className={cn(
+        "relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
+        isActive &amp;amp;&amp;amp; "z-10 ring-2 ring-ring ring-offset-background",
+        className
+      )}
+      {...props}
+    &amp;gt;
+      {char}
+      {hasFakeCaret &amp;amp;&amp;amp; (
+        &amp;lt;div className="pointer-events-none absolute inset-0 flex items-center justify-center"&amp;gt;
+          &amp;lt;div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" /&amp;gt;
+        &amp;lt;/div&amp;gt;
+      )}
+    &amp;lt;/div&amp;gt;
+  )
+})
+InputOTPSlot.displayName = "InputOTPSlot"
+
+const InputOTPSeparator = React.forwardRef&amp;lt;
+  React.ElementRef&amp;lt;"div"&amp;gt;,
+  React.ComponentPropsWithoutRef&amp;lt;"div"&amp;gt;
+&amp;gt;(({ ...props }, ref) =&amp;gt; (
+  &amp;lt;div ref={ref} role="separator" {...props}&amp;gt;
+    &amp;lt;Dot /&amp;gt;
+  &amp;lt;/div&amp;gt;
+))
+InputOTPSeparator.displayName = "InputOTPSeparator"
+
+export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

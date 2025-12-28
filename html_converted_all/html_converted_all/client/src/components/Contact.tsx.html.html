@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Contact.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Contact.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Contact.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { insertMessageSchema, type InsertMessage } from "@shared/schema";
+import { useSendMessage } from "@/hooks/use-portfolio";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Phone, Facebook, Instagram, MessageCircle, Send } from "lucide-react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+export function Contact() {
+  const mutation = useSendMessage();
+
+  const form = useForm&amp;lt;InsertMessage&amp;gt;({
+    resolver: zodResolver(insertMessageSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = (data: InsertMessage) =&amp;gt; {
+    mutation.mutate(data, {
+      onSuccess: () =&amp;gt; form.reset(),
+    });
+  };
+
+  return (
+    &amp;lt;section id="contact" className="py-24 bg-white"&amp;gt;
+      &amp;lt;div className="container mx-auto px-4 max-w-6xl"&amp;gt;
+        &amp;lt;div className="text-center mb-16"&amp;gt;
+          &amp;lt;h2 className="text-3xl md:text-4xl font-bold text-[#2c3e50] mb-2 font-display"&amp;gt;
+            Get In Touch
+          &amp;lt;/h2&amp;gt;
+          &amp;lt;div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" /&amp;gt;
+          &amp;lt;p className="mt-4 text-gray-500"&amp;gt;I'm currently available for freelance work and collaboration.&amp;lt;/p&amp;gt;
+        &amp;lt;/div&amp;gt;
+
+        &amp;lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24"&amp;gt;
+          {/* Contact Info */}
+          &amp;lt;motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          &amp;gt;
+            &amp;lt;div className="flex items-start space-x-6"&amp;gt;
+              &amp;lt;div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0"&amp;gt;
+                &amp;lt;Mail className="text-[#3498db]" /&amp;gt;
+              &amp;lt;/div&amp;gt;
+              &amp;lt;div&amp;gt;
+                &amp;lt;h3 className="text-xl font-bold text-[#2c3e50]"&amp;gt;Email Me&amp;lt;/h3&amp;gt;
+                &amp;lt;p className="text-gray-600 mt-1"&amp;gt;taherkhan5530@gmail.com&amp;lt;/p&amp;gt;
+              &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+
+            &amp;lt;div className="flex items-start space-x-6"&amp;gt;
+              &amp;lt;div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0"&amp;gt;
+                &amp;lt;Phone className="text-[#3498db]" /&amp;gt;
+              &amp;lt;/div&amp;gt;
+              &amp;lt;div&amp;gt;
+                &amp;lt;h3 className="text-xl font-bold text-[#2c3e50]"&amp;gt;Call Me&amp;lt;/h3&amp;gt;
+                &amp;lt;p className="text-gray-600 mt-1"&amp;gt;+880 1946-325530&amp;lt;/p&amp;gt;
+              &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+
+            &amp;lt;div className="flex items-start space-x-6"&amp;gt;
+              &amp;lt;div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0"&amp;gt;
+                &amp;lt;MapPin className="text-[#3498db]" /&amp;gt;
+              &amp;lt;/div&amp;gt;
+              &amp;lt;div&amp;gt;
+                &amp;lt;h3 className="text-xl font-bold text-[#2c3e50]"&amp;gt;Location&amp;lt;/h3&amp;gt;
+                &amp;lt;p className="text-gray-600 mt-1"&amp;gt;Sylhet, Bangladesh&amp;lt;/p&amp;gt;
+              &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+
+            &amp;lt;div className="pt-8 border-t border-gray-100"&amp;gt;
+              &amp;lt;h3 className="text-lg font-bold text-[#2c3e50] mb-6"&amp;gt;Follow Me&amp;lt;/h3&amp;gt;
+              &amp;lt;div className="flex space-x-4"&amp;gt;
+                &amp;lt;a href="https://www.facebook.com/profile.php?id=61582955453879" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-facebook"&amp;gt;
+                  &amp;lt;Facebook size={20} /&amp;gt;
+                &amp;lt;/a&amp;gt;
+                &amp;lt;a href="https://www.instagram.com/cxtaher?igsh=NjN0d3F2dWJldDN3" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#285aeb] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-instagram"&amp;gt;
+                  &amp;lt;Instagram size={20} /&amp;gt;
+                &amp;lt;/a&amp;gt;
+                &amp;lt;a href="https://wa.me/+8801946325530" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:-translate-y-1 transition-transform" data-testid="link-whatsapp"&amp;gt;
+                  &amp;lt;Send size={20} /&amp;gt;
+                &amp;lt;/a&amp;gt;
+              &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+          &amp;lt;/motion.div&amp;gt;
+
+          {/* Contact Form */}
+          &amp;lt;motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-[#f8f9fa] p-8 rounded-2xl border border-gray-100 shadow-sm"
+          &amp;gt;
+            &amp;lt;Form {...form}&amp;gt;
+              &amp;lt;form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6"&amp;gt;
+                &amp;lt;FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) =&amp;gt; (
+                    &amp;lt;FormItem&amp;gt;
+                      &amp;lt;FormLabel className="text-[#2c3e50] font-semibold"&amp;gt;Name&amp;lt;/FormLabel&amp;gt;
+                      &amp;lt;FormControl&amp;gt;
+                        &amp;lt;Input
+                          placeholder="Your Name"
+                          className="bg-white border-gray-200 focus:border-[#3498db] focus:ring-[#3498db]/20 h-12 rounded-xl"
+                          {...field}
+                        /&amp;gt;
+                      &amp;lt;/FormControl&amp;gt;
+                      &amp;lt;FormMessage /&amp;gt;
+                    &amp;lt;/FormItem&amp;gt;
+                  )}
+                /&amp;gt;
+                
+                &amp;lt;FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) =&amp;gt; (
+                    &amp;lt;FormItem&amp;gt;
+                      &amp;lt;FormLabel className="text-[#2c3e50] font-semibold"&amp;gt;Email&amp;lt;/FormLabel&amp;gt;
+                      &amp;lt;FormControl&amp;gt;
+                        &amp;lt;Input
+                          placeholder="Your Email"
+                          className="bg-white border-gray-200 focus:border-[#3498db] focus:ring-[#3498db]/20 h-12 rounded-xl"
+                          {...field}
+                        /&amp;gt;
+                      &amp;lt;/FormControl&amp;gt;
+                      &amp;lt;FormMessage /&amp;gt;
+                    &amp;lt;/FormItem&amp;gt;
+                  )}
+                /&amp;gt;
+
+                &amp;lt;FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) =&amp;gt; (
+                    &amp;lt;FormItem&amp;gt;
+                      &amp;lt;FormLabel className="text-[#2c3e50] font-semibold"&amp;gt;Message&amp;lt;/FormLabel&amp;gt;
+                      &amp;lt;FormControl&amp;gt;
+                        &amp;lt;Textarea
+                          placeholder="Tell me about your project..."
+                          className="bg-white border-gray-200 focus:border-[#3498db] focus:ring-[#3498db]/20 min-h-[150px] rounded-xl resize-none"
+                          {...field}
+                        /&amp;gt;
+                      &amp;lt;/FormControl&amp;gt;
+                      &amp;lt;FormMessage /&amp;gt;
+                    &amp;lt;/FormItem&amp;gt;
+                  )}
+                /&amp;gt;
+
+                &amp;lt;button
+                  type="submit"
+                  disabled={mutation.isPending}
+                  className="w-full h-14 bg-[#3498db] hover:bg-[#2980b9] text-white font-bold rounded-xl shadow-lg shadow-[#3498db]/25 hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                &amp;gt;
+                  {mutation.isPending ? (
+                    &amp;lt;span&amp;gt;Sending...&amp;lt;/span&amp;gt;
+                  ) : (
+                    &amp;lt;&amp;gt;
+                      &amp;lt;Send className="w-5 h-5" /&amp;gt;
+                      &amp;lt;span&amp;gt;Send Message&amp;lt;/span&amp;gt;
+                    &amp;lt;/&amp;gt;
+                  )}
+                &amp;lt;/button&amp;gt;
+              &amp;lt;/form&amp;gt;
+            &amp;lt;/Form&amp;gt;
+          &amp;lt;/motion.div&amp;gt;
+        &amp;lt;/div&amp;gt;
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/section&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>

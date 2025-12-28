@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>textarea.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>textarea.tsx</h1>
+  <pre><code class="language-tsx">import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+const Textarea = React.forwardRef&lt;
+  HTMLTextAreaElement,
+  React.ComponentProps&lt;"textarea"&gt;
+&gt;(({ className, ...props }, ref) =&gt; {
+  return (
+    &lt;textarea
+      className={cn(
+        "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        className
+      )}
+      ref={ref}
+      {...props}
+    /&gt;
+  )
+})
+Textarea.displayName = "Textarea"
+
+export { Textarea }
+</code></pre>
+</body>
+</html>

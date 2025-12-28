@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>use-mobile.tsx</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>use-mobile.tsx</h1>
+  <pre><code class="language-tsx">import * as React from "react"
+
+const MOBILE_BREAKPOINT = 768
+
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = React.useState&lt;boolean | undefined&gt;(undefined)
+
+  React.useEffect(() =&gt; {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+    const onChange = () =&gt; {
+      setIsMobile(window.innerWidth &lt; MOBILE_BREAKPOINT)
+    }
+    mql.addEventListener("change", onChange)
+    setIsMobile(window.innerWidth &lt; MOBILE_BREAKPOINT)
+    return () =&gt; mql.removeEventListener("change", onChange)
+  }, [])
+
+  return !!isMobile
+}
+</code></pre>
+</body>
+</html>

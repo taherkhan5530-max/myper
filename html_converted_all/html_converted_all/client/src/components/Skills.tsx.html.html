@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills.tsx.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <h1>Skills.tsx.html</h1>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Skills.tsx&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Skills.tsx&lt;/h1&gt;
+  &lt;pre&gt;&lt;code class="language-tsx"&gt;import { useSkills } from "@/hooks/use-portfolio";
+import { motion } from "framer-motion";
+import * as FaIcons from "react-icons/fa";
+import * as SiIcons from "react-icons/si";
+import * as IoIcons from "react-icons/io5";
+import { IconType } from "react-icons";
+
+// Helper to resolve icon string to component
+const getIconComponent = (iconName: string): IconType =&amp;gt; {
+  // @ts-ignore
+  const Icon = FaIcons[iconName] || SiIcons[iconName] || IoIcons[iconName];
+  return Icon || FaIcons.FaCode; // Fallback
+};
+
+export function Skills() {
+  const { data: skills, isLoading } = useSkills();
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
+  return (
+    &amp;lt;section id="skills" className="py-24 bg-[#f4f4f4]"&amp;gt;
+      &amp;lt;div className="container mx-auto px-4 max-w-6xl"&amp;gt;
+        &amp;lt;div className="text-center mb-16"&amp;gt;
+          &amp;lt;h2 className="text-3xl md:text-4xl font-bold text-[#2c3e50] mb-2 font-display"&amp;gt;
+            My Skills
+          &amp;lt;/h2&amp;gt;
+          &amp;lt;div className="h-1 w-20 bg-[#3498db] mx-auto rounded-full" /&amp;gt;
+        &amp;lt;/div&amp;gt;
+
+        {isLoading ? (
+          &amp;lt;div className="grid grid-cols-2 md:grid-cols-4 gap-6"&amp;gt;
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) =&amp;gt; (
+              &amp;lt;div key={i} className="h-40 bg-gray-200 rounded-xl animate-pulse" /&amp;gt;
+            ))}
+          &amp;lt;/div&amp;gt;
+        ) : (
+          &amp;lt;motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
+          &amp;gt;
+            {skills?.map((skill) =&amp;gt; {
+              const Icon = getIconComponent(skill.icon);
+              return (
+                &amp;lt;motion.div
+                  key={skill.id}
+                  variants={item}
+                  className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-[#3498db]/20 group flex flex-col items-center justify-center text-center h-full min-h-[220px]"
+                &amp;gt;
+                  &amp;lt;div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-[#3498db] transition-all duration-300"&amp;gt;
+                    &amp;lt;Icon className="text-3xl text-[#3498db] group-hover:text-white transition-colors duration-300" /&amp;gt;
+                  &amp;lt;/div&amp;gt;
+                  &amp;lt;h3 className="text-lg font-bold text-[#2c3e50] mb-2"&amp;gt;{skill.name}&amp;lt;/h3&amp;gt;
+                  &amp;lt;p className="text-xs text-gray-400 uppercase tracking-[0.2em] font-bold"&amp;gt;
+                    {skill.category}
+                  &amp;lt;/p&amp;gt;
+                &amp;lt;/motion.div&amp;gt;
+              );
+            })}
+          &amp;lt;/motion.div&amp;gt;
+        )}
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/section&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</body>
+</html>
