@@ -7,6 +7,10 @@ import { db } from "./db";
 import { skills } from "@shared/schema";
 
 async function seedDatabase() {
+  if (!db) {
+    console.log("Skipping database seeding (no database connection)");
+    return;
+  }
   const existingSkills = await storage.getSkills();
   if (existingSkills.length === 0) {
     await db.insert(skills).values([
